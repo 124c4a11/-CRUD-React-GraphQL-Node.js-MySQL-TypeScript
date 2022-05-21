@@ -1,6 +1,8 @@
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
+
 import { CREATE_USER } from '../../GraphQL/User/User.mutations';
+import { GET_ALL_USERS } from '../../GraphQL/User/User.queries';
 
 export function CreateUser(): JSX.Element {
   const [name, setName] = useState<string>('');
@@ -8,7 +10,7 @@ export function CreateUser(): JSX.Element {
   const [password, setPassword] = useState<string>('');
 
   const [createUser, { error }] = useMutation(CREATE_USER, {
-    refetchQueries: []
+    refetchQueries: [GET_ALL_USERS],
   });
 
   function addUser() {
