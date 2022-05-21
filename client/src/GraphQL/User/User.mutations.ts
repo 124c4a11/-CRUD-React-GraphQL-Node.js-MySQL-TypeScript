@@ -14,3 +14,18 @@ export const CREATE_USER = gql`
     ) { message }
   }
 `;
+
+
+export const CHANGE_PASSWORD = gql`
+  mutation changePassword(
+    $id: ID!,
+    $currentPassword: String!,
+    $newPassword: String!
+  ) {
+    changePassword(
+      id: $id,
+      currentPassword: $currentPassword,
+      newPassword: $newPassword
+    ) { message }
+  }
+`;
