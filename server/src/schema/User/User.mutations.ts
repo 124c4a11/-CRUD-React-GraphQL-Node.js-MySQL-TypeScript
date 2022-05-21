@@ -51,3 +51,18 @@ export const changePassword = {
     return { message: 'The password updated!' };
   }
 };
+
+
+export const deleteUser = {
+  type: MessageType,
+  args: {
+    id: { type: GraphQLID }
+  },
+  async resolve(parent: any, args: Pick<IUser, 'id'>) {
+    const { id } = args;
+
+    await Users.delete({ id });
+
+    return { message: 'The user deleted!' };
+  },
+};
